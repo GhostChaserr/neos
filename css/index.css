@@ -166,7 +166,7 @@ footer{
 	position: relative;
 	overflow: hidden;
 }
-footer img{
+.fw-img{
 	width: 40%;
 	margin-left: 50%;
 	transform: translateX(-50%);
@@ -205,11 +205,22 @@ footer img{
 .contact-icon{
 	display: none;
 }
+.footer-logo{
+	position: absolute;
+	right: 0;
+	bottom: 50px;
+	display: block;
+	width: 122px;
+	height: 66px;
+}
+
 /*Popup*/
 .popup{
 	position: fixed;
-	width: 900px;
-	height: 600px;
+	width: 93%;
+	max-width: 1090px;
+	margin: 0 auto;
+	height: 635px;
 	top: 50%;
 	transform: translateY(-50%);
 	overflow: hidden;
@@ -424,10 +435,13 @@ footer img{
 	.contact-item span,.contact-item a {
 		font-size: 12px;
 	}
-	footer img {
+	.contact-list{
+		padding-bottom: 30px;
+	}
+	.fw-img {
 	    position: absolute;
 	    bottom: 0;
-	    left: 0;
+	    left: 6px;
 	    width: 33%;
 	    margin-left: 0; 
 	    transform: translateX(0);
@@ -438,8 +452,19 @@ footer img{
     width: 8%;
     height: 150px;
 	}
+	.tower-img img{
+		width: 100%;
+	}
 	.contact-item {
     	justify-content: center;
+    	    margin-top: 7px;
+	}
+	.footer-logo{
+		right: 25%;
+	    transform: translateX(50%);
+	    bottom: 10px;
+		width: 58px;
+	    height: 27px;
 	}
 
 }

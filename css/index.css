@@ -29,7 +29,15 @@ section{
 	position: absolute;
 	top: 0; bottom: 0; left: 0; right: 50%;
 }
-
+#overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background:rgba(0,0,0,.7);
+	z-index: -1;
+}
 
 
 
@@ -155,20 +163,48 @@ section{
 
 /*Footer*/
 footer{
+	position: relative;
+	overflow: hidden;
+}
+footer img{
+	width: 40%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+.tower-img{
+	position: absolute;
+	top: 0;
+	left: 26%;
+	width: 15%;
+}
+.tower-img img{
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	overflow: hidden;
+	transform: translateX(0);
+}
+.contact{
 	display: flex;
-	justify-content: space-between;
-	padding: 60px 0 20px;
+	justify-content: flex-end;
 }
-.footer-left a{
-	color: #fff;
+.contact-list{
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
 }
-.footer-right a{
-	color: #01264B;
+.contact-item{
+	display: flex;
+	flex-direction: column;
 }
-.footer-right a:first-child ,.footer-left a:first-child{
-	margin-right: 40px;
+.contact-item span,.contact-item a {
+	margin-bottom: 20px;
+	color: #052A4E;
+	font-size: 18px;
 }
-
+.contact-icon{
+	display: none;
+}
 /*Popup*/
 .popup{
 	position: fixed;
@@ -311,17 +347,6 @@ footer{
 	.menu{
 		display: none;
 	}
-	.footer-left, .footer-right{
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin: 0;
-	}
-	.footer-right a:first-child, .footer-left a:first-child {
-		margin-right: 0;
-		margin-bottom: 5px;
-	}
 	.popup{
 		width: calc(100% - 20px);
 		height: 450px;
@@ -332,6 +357,9 @@ footer{
 	.popup-right p{
 		margin-bottom: 10px;
 	}
+	.contact-item:nth-child(2){
+		display: none;
+	}
  }
 
 /* Extra small devices (portrait phones, less than 576px)*/
@@ -340,7 +368,7 @@ footer{
 		padding: 0 5px;
 	}
 	.product-item{
-		width: 90%;
+		width: 70%;
 		height: auto;
 	}
 	.popup{
@@ -353,10 +381,13 @@ footer{
 	}
 	.popup-slide img{
 		margin: 0 auto;
-		max-width: 70%;
-	}	
+		max-width: 60%;
+	}
 	.popup-left, .popup-right{
 		width: 100%;
+	}
+	.popup-right{
+		min-height: 50vh;
 	}
 	.popup-title{
 		font-size: 24px;
@@ -369,4 +400,43 @@ footer{
 		margin-bottom: 3px;
 		font-size: 16px;
 	}
+	.tower-img {
+	    top: 53%;
+	    left: 28%;
+	    width: 10%;
+	}
+	.contact-item:nth-child(1){
+		display: none;
+	}
+	.contact-icon{
+		display: flex;
+		width: 50%;
+		flex-direction: column;
+		align-items: flex-end;
+		margin-right: 20px;
+
+	}
+	.contact-icon i{
+		margin-bottom: 20px;
+		color: #fff;
+		font-size: 18px;
+	}
+	.contact-item span,.contact-item a {
+		font-size: 16px;
+	}
+	footer img {
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    width: 33%;
+	    margin-left: 0; 
+	    transform: translateX(0);
+	}
+	.tower-img {
+    top: 29%;
+    left: 0;
+    width: 8%;
+    height: 150px;
+	}
+
 }

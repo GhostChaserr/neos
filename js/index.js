@@ -19,7 +19,6 @@ var navWrap = document.getElementById("nav-wrap");
 toggle[0].onclick = function(){
 	toggleMenu[0].classList.toggle("show");
 	navWrap.classList.toggle("bg");
-    console.log("xer");
 };
 
 
@@ -194,28 +193,34 @@ const kettle = [
 
 
 
+/*
 function openPopup(){
 	var popup = document.getElementById('myPopup');
-	popup.classList.toggle('show');
+    var overlay = document.getElementById('overlay');
+	overlay.classList.toggle('show');
+    popup.classList.toggle('show');
 }
+*/
 
-
-    const links = document.querySelectorAll("a.product-link");
+    
     var slide =  document.getElementById('myPopup');
+    var overlay = document.getElementById('overlay');
+    var myNode = document.getElementById("myPopup");
 
-        // ხურავს ფოფაფს
+    // ხსნის ფოფაფს
+    const links = document.querySelectorAll("a.product-link");
     links.forEach(function(link) {
     	link.onclick = function(event){
-            // ვმალავთ ტოგგლ ღილაკს
-            var toggle = document.getElementById("togle");
-            toggle.style.zIndex = "-1";
-    		//მომხმარებელმა სლაიდის გახსნისას ზევიდან სხვა პროდუქტის სლაიდი რომ არ გახსნას დახურვამდე
-    		var linkremove = document.getElementsByClassName("product-link");
-    		for(var i = 0; i<linkremove.length; i++){
-    			linkremove[i].style.zIndex = "-1";
-    		}
+            // ვმალავთ ტოგგლ ღილაკს და მენიუს ფოფაფის გახსნისას( თუ ის უკვე გახსნილია ფოფაფს ზევიდან ედება)
+            toggle[0].style.zIndex = "-1";
+            toggleMenu[0].style.zIndex = "-1";
+            //ვამუქებთ უკანა ფონს ფოფაფის გახსნისას და ფოფაფი გადმოგვაქვს ზევით
+    		overlay.style.zIndex = "2";
+            slide.style.zIndex="3";
+
+
         	var product;
-        	// ვიგებთ რომელ პროდუქტს დააჟირა მომხმარებელმა და ცვლადს ვანიჭებთ შესაბამის მასივს
+        	// ვიგებთ რომელ პროდუქტს დააჭირა მომხმარებელმა და ცვლადს ვანიჭებთ შესაბამის მასივს
         	var attribute = link.getAttribute('data-product');
 			if(attribute === "0"){
 				product = tv;
@@ -262,29 +267,26 @@ function openPopup(){
 
 				slide.appendChild(div);   
 			}
-			openPopup();
+
 			$('.popup').slick()
 
 			// ხურავს ფოფაფს არ მუშაობს
 			const closers = document.querySelectorAll("a.popup-close");
     		closers.forEach(function(closer) {
     			closer.onclick = function(event){
-	        		openPopup();
-	        		//ვშლით ყველა ახლად შექმნილ დივს და სლიქ სლაიდერის მიერ მინიჭებულ კლასებს, იმისთვის რომ ხელმეორედ დაჭერის შემთხვევაში ძველები აღარ გაიხსნას
-                    // ასევე უკან ვხსნით ტოგლ ღილაკს
-	        		var myNode = document.getElementById("myPopup");
-                    var toggle = document.getElementById("togle");
-                    toggle.style.zIndex = "1";
+	        		//ვშლით ყველა ახლად შექმნილ დივს და სლიქ სლაიდერის მიერ მინიჭებულ კლასებს, იმისთვის 
+                    //რომ ხელმეორედ დაჭერის შემთხვევაში ძველები აღარ გაიხსნას
 					while (myNode.firstChild) {
 	    				myNode.removeChild(myNode.firstChild);
 					}
 					myNode.classList.remove("slick-initialized");
 					myNode.classList.remove("slick-slider");
-					//ვაბრუნებთ ლინკს ზედა ფენაზე რომ ისევ იმუშაოს
-					var linkremove = document.getElementsByClassName("product-link");
-    					for(var i = 0; i<linkremove.length; i++){
-    						linkremove[i].style.zIndex = "99";
-    					}
+					// ვმალავთ ტოგგლ ღილაკს და მენიუს ფოფაფის გახსნისას( თუ ის უკვე გახსნილია ფოფაფს ზევიდან ედება)
+                    toggle[0].style.zIndex = "";
+                    toggleMenu[0].style.zIndex = "";
+                    //ვამუქებთ უკანა ფონს ფოფაფის გახსნისას და ფოფაფი გადმოგვაქვს ზევით
+                    overlay.style.zIndex = "-1";
+                    slide.style.zIndex="";
         		}
  			 });
         }
